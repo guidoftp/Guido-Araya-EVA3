@@ -19,3 +19,12 @@ export const obtenerPersona = async() =>{
     
 }
 
+export const actualizarGuerrero = async (objeto,id)=>{
+    const ref = doc (db,"guerrero",id);
+    await updateDoc (ref,objeto);
+}
+
+export const eliminarGuerrero = async (id) =>{
+    const ref = doc(db,"guerrero",id);
+    await deleteDoc(ref);
+}

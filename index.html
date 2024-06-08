@@ -67,7 +67,81 @@
         
         <!-- ME EQUIVOQYE DE TYPE, era type button -->
         <center><button type="button" id="btnRegistrar">Registrar Guerrero Z</button></center>
+        <center><button type="button" id="btnActualizar">Mofificar Guerrero</button></center>
+        
+        <br><br>
+    <fieldset>
+        <form>
+            <!-- ACTUALIZAR DATOS -->
+             <!-- ...... -->
+        <h2>Datos del usuario</h2>
+        <label for="UPDnombre">Nombre del usuario: </label>
+        <input type="text" id="UPDnombre" name="nombre"><br><br>
 
+        <label for="UPDedad">Edad del usuario: </label>
+        <input type="number" id="UPDedad" name="edad"><br><br>
+
+        <label for="UPDemail">Correo electronico: </label>
+        <input type="email" id="UPDemail" name="email"><br><br>
+
+        <label for="UPDrut">Rut: </label>
+        <input type="text" id="UPDrut" name="rut"><br><br>
+        <!-- FIN DE CAMPOS USUARIO -->
+
+        <h2>Personajes</h2>
+        <label for="UPDpersonaje">Personaje favorito: </label>
+        <input type="text" id="UPDpersonaje" name="personaje"><br><br>
+
+        <h2>Habilidades</h2>
+        <label for="UPDhabilidad">Habilidades favoritas: </label>
+        <textarea id="UPDhabilidad" name="habilidad" rows="5"></textarea><br><br>
+
+        <h2>Openings</h2> 
+        <label for="UPDopening">Openings favoritos: </label><br><br>
+        <input type="checkbox" id="UPDopening1" name="opening1">CHA-LA HEAD-CHA-LA<br><br>
+        <input type="checkbox" id="UPDopening2" name="opening2">WE GOTTA POWER<br><br>
+        <input type="checkbox" id="UPDopening3" name="opening3">EL PODER NUESTRO ES<br><br>
+
+        <h2>Razas</h2>
+        <label for="UPDraza1">Saijayins</label>
+        <input type="radio" id="UPDraza1" name="raza1" value="Saijayins"><br><br>
+        <label for="raza2">Androides</label>
+        <input type="radio" id="UPDraza2" name="raza2" value="Androides"><br><br>
+        <label for="raza3">Humanos</label>
+        <input type="radio" id="UPDraza3" name="raza3" value="Humanos"><br><br>
+
+        <h2>Sagas</h2>
+        <label for="UPDsaga">Saga favorita: </label>
+        <select id="UPDsaga" name="saga">
+            <option value="Saga de los saijayins">Saga de los saijayins</option>
+            <option value="Saga de Freezer">Saga de Freezer</option>
+            <option value="Saga de Cell">Saga de Cell</option>
+            <option value="Saga de Majin Boo">Saga de Majin Boo</option>
+        </select><br><br>
+        <button type="button" id="btnActualizar">Actualizar</button>
+            
+        </form>
+        ></fieldset>
+    </fieldset>
+    <br>
+
+    <fieldset>
+        <h1>Tabla de registros</h1>
+        <table>
+            <tr>
+                <th>Nombre del usuario</th>
+                <th>Edad del usuario</th>
+                <th>Correo del usuario</th>
+                <th>Rut del usuario</th>
+                <th>Personaje fav</th>
+                <th>Habilidad fav</th>
+                <th>Opening fav</th>
+                <th>Razas fav</th>
+                <th>Saga fav</th>
+            </tr>
+            <tbody id="tbDatos">
+            </tbody>
+        </table>
     </fieldset>
     </form>
     
