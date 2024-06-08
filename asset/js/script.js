@@ -1,6 +1,8 @@
 import {eliminarGuerrero, obtenerPersona, registrarGuerrero, actualizarGuerrero } from "./promesas.js"
 window.addEventListener("load", ()=>{
     document.getElementById("btnRegistrar").addEventListener("click",registrar);
+    document.getElementById("btnActualizar").addEventListener("click",actualizar);
+    cargarDatos();
 });
 
 const registrar = () =>{
@@ -79,7 +81,7 @@ const cargarDatos = () => {
             estrucura += "<td>" + guerrero.opening + "</td>";
             estrucura += "<td>" + guerrero.raza + "</td>";
             estrucura += "<td>" + guerrero.saga + "</td>";
-            estrucura += "<td> <button id='UPD'" + guerrero.id + "'>Actualizar </td> </button>";
+            estrucura += "<td> <button id='UPD" + guerrero.id + "'>Actualizar </td> </button>"; //ME COMI UNA COMILLA AAAD:
             estrucura += "<td> <button id='DEL" + guerrero.id + "'>Eliminar </td> </button>";
             estrucura += "</tr>"
         });
