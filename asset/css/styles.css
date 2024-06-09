@@ -2,3 +2,21 @@ body.contrasteNegro {
     color: #fff;
     background-color: #000;
 }
+/* Estilos personalizados */ 
+.blanco {
+    color: #000;
+    background-color: #fff;
+  }
+
+.negro {
+    background-color: #000;
+    color: #fff;
+}  
+
+.tamanio-letra-grande {
+    font-size: 20px; /* Tamaño de letra default*/
+  }
+  
+.tamanio-letra-muy-grande {
+    font-size: 10px; /* Tamaño de letra muy grande */
+  }

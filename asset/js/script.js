@@ -4,11 +4,34 @@ window.addEventListener("load", ()=>{
     document.getElementById("btnRegistrar").addEventListener("click", registrar);
     document.getElementById("btnActualizar").addEventListener("click", actualizar);
     cargarDatos();
+    document.getElementById("btnFuente").addEventListener("click",fuente)
 });
 //AKI SELECCIONE EL ELEMENTO DEL HTML 
 document.getElementById("btncambiarContraste").addEventListener("click", () => {
     document.body.classList.toggle("contrasteNegro");
 });
+
+const fuente = () => {
+    // Obtiene el elemento del botón con el ID 'btnFuente'
+    const btnFuente = document.getElementById('btnFuente');
+    
+    // Obtiene todos los elementos de texto que se desean modificar
+    //y el query seleciona lo q queremos para el tamanio
+    const elementosTexto = document.querySelectorAll('form, table');
+    
+    // Obtiene el título h2
+    const tituloH2 = document.querySelector('h2');
+    
+    // Itera sobre cada elemento de texto y alterna la clase 'tamanio-letra-grande'
+    elementosTexto.forEach(elemento => {
+      elemento.classList.toggle('tamanio-letra-grande');
+    });
+    
+    // Alterna la clase 'tamanio-letra-muy-grande' en el título h2
+    tituloH2.classList.toggle('tamanio-letra-muy-grande');
+  }
+
+
 //Obtuve los elementos mediantes sus ID
 const registrar = () => {
     let eNombre = document.getElementById("nombre");
@@ -156,8 +179,10 @@ const actualizar = () => {
     let eHabilidad = document.getElementById("habilidad");
     let eOpening;
     //obtive el valor del campos de opening seleccionado
+    //verefica cual checkbox marca y asigna un valor default
     if (document.getElementById("opening1").checked){
-        eOpening="CHA-LA HEAD-CHA-LA";
+        eOpening="CHA-LA HEAD-CHA-LA"; //si marca este sera su valor y sucesivamete con los otros 2
+        //
     } else if(document.getElementById("opening2").checked){
         eOpening="WE GOTTA POWER";
     } else if(document.getElementById("opening3").checked){
@@ -166,10 +191,13 @@ const actualizar = () => {
 
     let eRaza;
     //lo mismo que el opening
+        //verefica cual select marca y asigna un valor default
     if (document.getElementById("raza1").checked){
         eRaza="Saiyajins";
+
     } else if (document.getElementById("raza2").checked){
         eRaza="Androides";
+
     } else if (document.getElementById("raza3").checked){
         eRaza="Humanos";
     }
