@@ -233,4 +233,5 @@ const actualizar = () => {
         alert("Se a actualizado correctamente a \nNombre");
         cargarDatos();
     });
+
 }
