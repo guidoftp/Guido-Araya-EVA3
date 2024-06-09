@@ -1,11 +1,16 @@
-import {eliminarGuerrero, obtenerPersona, registrarGuerrero, actualizarGuerrero } from "./promesas.js"
+import {actualizarPersona, obtenerPersonas, registrarPersona, eliminarPersona} from "./promesas.js";
+
 window.addEventListener("load", ()=>{
-    document.getElementById("btnRegistrar").addEventListener("click",registrar);
-    document.getElementById("btnActualizar").addEventListener("click",actualizar);
+    document.getElementById("btnRegistrar").addEventListener("click", registrar);
+    document.getElementById("btnActualizar").addEventListener("click", actualizar);
     cargarDatos();
 });
-
-const registrar = () =>{
+//AKI SELECCIONE EL ELEMENTO DEL HTML 
+document.getElementById("btncambiarContraste").addEventListener("click", () => {
+    document.body.classList.toggle("contrasteNegro");
+});
+//Obtuve los elementos mediantes sus ID
+const registrar = () => {
     let eNombre = document.getElementById("nombre");
     let eEdad = document.getElementById("edad")
     let eEmail = document.getElementById("email")
@@ -13,26 +18,28 @@ const registrar = () =>{
     let ePersonaje = document.getElementById("personaje")
     let eHabilidad = document.getElementById("habilidad")
 
+    //Obtuve los valores en los campos especificos como el checkbos 
     let eOpening;
     if (document.getElementById("opening1").checked){
         eOpening="CHA-LA HEAD-CHA-LA";
     } else if(document.getElementById("opening2").checked){
         eOpening="WE GOTTA POWER";
     } else if(document.getElementById("opening3").checked){
-        eOpening="EL PODER NUESTRO ES";
+        eOpening="El Podre Nuestro Es";
     }
 
     let eRaza;
     if (document.getElementById("raza1").checked){
-        eRaza="Saijayins";
+        eRaza="Saiyajins";
     } else if (document.getElementById("raza2").checked){
         eRaza="Androides";
     } else if (document.getElementById("raza3").checked){
         eRaza="Humanos";
     }
 
-    let eSaga = document.getElementById("saga");
-
+    let eSaga= document.getElementById("saga");
+    
+    //aki obtuve los valores de los campos
     let vNombre = eNombre.value;
     let vEdad = eEdad.value;
     let vEmail = eEmail.value;
@@ -42,116 +49,133 @@ const registrar = () =>{
     let vOpening = eOpening;
     let vRaza = eRaza;
     let vSaga = eSaga.value;
-
-    //recuperar el objeto
+    
+    //aqui se crearon los objetos con los datos del formulario
     let objeto = {
         nombre: vNombre,
         edad: vEdad,
-        email: vEmail, 
+        email: vEmail,
         rut: vRut,
         personaje: vPersonaje,
         habilidad: vHabilidad,
         opening: vOpening,
         raza: vRaza,
         saga: vSaga,
-
+        
     };
 
-    registrarGuerrero(objeto).then(()=>{
-        alert ("Se registro el Guerrero Z");
+    //llamo a la funcion con el objeto q contiene los datos
+    registrarPersona(objeto).then(() => {
+        //si todo sale bien pasa esto
+        alert("Registrado con exito");
         cargarDatos();
-    }).catch((r)=>{
-        alert ("Ups, tuviste un problema");
-        alert (r);
+        //si sale algo mal pasara esto
+    }).catch((r) => {
+        alert("Algo ocurrio");
+        alert(r);
         console.log(r)
     });
 }
 
 const cargarDatos = () => {
-    obtenerPersona().then((guerrero)=>{
-        let estrucura = "";
+    //llame la funcion para obtenre los datos de LOS registrados
+    obtenerPersonas().then((guerrero)=>{
+        let estructura = ""; //llame una variable estructura
         guerrero.forEach((guerrero)=>{
-            estrucura += "<tr>";
-            estrucura += "<td>" + guerrero.nombre + "</td>";
-            estrucura += "<td>" + guerrero.edad + "</td>";
-            estrucura += "<td>" + guerrero.email + "</td>";
-            estrucura += "<td>" + guerrero.rut + "</td>";
-            estrucura += "<td>" + guerrero.personaje + "</td>";
-            estrucura += "<td>" + guerrero.habilidad + "</td>";
-            estrucura += "<td>" + guerrero.opening + "</td>";
-            estrucura += "<td>" + guerrero.raza + "</td>";
-            estrucura += "<td>" + guerrero.saga + "</td>";
-            estrucura += "<td> <button id='UPD" + guerrero.id + "'>Actualizar </td> </button>"; //ME COMI UNA COMILLA AAAD:
-            estrucura += "<td> <button id='DEL" + guerrero.id + "'>Eliminar </td> </button>";
-            estrucura += "</tr>"
+            estructura += "<tr>";
+            estructura += "<td>" + guerrero.nombre + "</td>";
+            estructura += "<td>" + guerrero.edad + "</td>";
+            estructura += "<td>" + guerrero.email + "</td>";
+            estructura += "<td>" + guerrero.rut + "</td>";
+            estructura += "<td>" + guerrero.personaje + "</td>";
+            estructura += "<td>" + guerrero.habilidad + "</td>";
+            estructura += "<td>" + guerrero.opening + "</td>";
+            estructura += "<td>" + guerrero.raza + "</td>";
+            estructura += "<td>" + guerrero.saga + "</td>";
+            estructura += "<td> <button id= '" + guerrero.id + "'>Actualizar </td> </button>";
+            estructura += "<td> <button id= 'DEL" + guerrero.id + "'>Eliminar </td> </button>";
+            estructura += "</tr>"
         });
-        document.getElementById("tbDatos").innerHTML = estrucura;
-        guerrero.forEach((guerrero) => {
-            let boton = document.getElementById("UPD"+guerrero.id);
-            boton.addEventListener("click",()=>{
-                let eNombre = document.getElementById("UPDnombre");
-                let eEdad = document.getElementById("UPDedad");
-                let eEmail = document.getElementById("UPDemail");
-                let eRut = document.getElementById("UPDrut");
-                let ePersonaje = document.getElementById("UPDpersonaje");
-                let eHabilidad = document.getElementById("UPDhabilidad");
-                let eOpening = document.getElementById("UPDopening");
-                let eRaza = document.getElementById("UPDraza");
-                let eSaga = document.getElementById("UPDsaga");
+        //y finalmente se asigno a una estructura HTML
+        document.getElementById("tbDatos").innerHTML = estructura;
 
-                eNombre.value=guerrero.nombre;
-                eEdad.value=guerrero.edad;
-                eEmail.value=guerrero.email;
-                eRut.value=guerrero.rut;
-                ePersonaje =guerrero.personaje;
+        //agrege un evento para el boron actualiza
+        guerrero.forEach((guerrero)=>{
+            let boton = document.getElementById(""+guerrero.id); //se selecciona al boton actualzair por su id
+            boton.addEventListener("click",()=>{
+                let eNombre = document.getElementById("nombre");
+                let eEdad = document.getElementById("edad");
+                let eEmail = document.getElementById("email");
+                let eRut = document.getElementById("rut");
+                let ePersonaje = document.getElementById("personaje");
+                let eHabilidad = document.getElementById("habilidad");
+                let eOpening = document.getElementById("opening");
+                let eRaza = document.getElementById("raza");
+                let eSaga = document.getElementById("saga");
+                
+                //Asigne los valores del guerrero seleccionado 
+                eNombre.value = guerrero.nombre;
+                eEdad.value = guerrero.edad;
+                eEmail.value = guerrero.eEmail;
+                eRut.value = guerrero.rut;
+                ePersonaje = guerrero.personaje;
                 eHabilidad = guerrero.habilidad;
-                eOpening =guerrero.opening;
-                eRaza =guerrero.raza;
-                eSaga =guerrero.saga;
-                document.getElementById("btnActualizar").value=guerrero.id;
+                eOpening = guerrero.opening;
+                eRaza = guerrero.raza;
+                eSaga = guerrero.saga;
+
+                //use el identificador para poder actualizar los datos 
+                document.getElementById("btnActualizar").value = guerrero.id;
             });
+            //obtengo el boton eliminar
             let botonDEL = document.getElementById("DEL"+guerrero.id);
+            //agrege un evento de click para eliminar
             botonDEL.addEventListener("click",()=>{
-                if(confirm("Quieres eliminar a este Guerrero Z?"+ guerrero.nombre + ""+guerrero.rut)){
-                    eliminarGuerrero(guerrero.id).then(()=>{
-                        alert ("Se ha eliminado correctamente");
-                        cargarDatos();
-                    });
-                }
+                //mostrara un mensaje de confirmacion
+            if(confirm("Seguro que desea eliminar a: \nNombre como guerrero Z?" + guerrero.nombre+ " "+guerrero.rut)){
+            //si se confirma saldra un mensaje
+                eliminarPersona(guerrero.id).then(()=>{
+                    //se mostrara un mensaje exitosi y se recargara los datos de actualizar de la tabla
+                    alert("Se ha eliminado a \nNombre de los Guerreros Z");
+                    cargarDatos();
+                });
+            }
             });
-            
         });
+
     });
 }
 
-const actualizar =()=>{
-    let eNombre = document.getElementById("UPDnombre");
-    let eEdad = document.getElementById("UPDedad");
-    let eEmail = document.getElementById("UPDemail");
-    let eRut = document.getElementById("UPDrut");
-    let ePersonaje = document.getElementById("UPDpersonaje");
-    let eHabilidad = document.getElementById("UPDhabilidad");
-
+const actualizar = () => {
+    //obtuve los elementos de campos del form
+    let eNombre = document.getElementById("nombre");
+    let eEdad = document.getElementById("edad");
+    let eEmail = document.getElementById("email")
+    let eRut = document.getElementById("rut");
+    let ePersonaje = document.getElementById("personaje");
+    let eHabilidad = document.getElementById("habilidad");
     let eOpening;
-    if (document.getElementById("UPDopening1").checked){
+    //obtive el valor del campos de opening seleccionado
+    if (document.getElementById("opening1").checked){
         eOpening="CHA-LA HEAD-CHA-LA";
-    } else if(document.getElementById("UPDopening2").checked){
-        eOpening = "WE GOTTA POWER"
-    } else if(document.getElementById("UPDopening3").checked){
-        eOpening="EL PODER NUESTRO ES";
+    } else if(document.getElementById("opening2").checked){
+        eOpening="WE GOTTA POWER";
+    } else if(document.getElementById("opening3").checked){
+        eOpening="El Podre Nuestro Es";
     }
 
     let eRaza;
-    if (document.getElementById("UPDraza1").checked){
-        eRaza="Saijayins";
-    } else if (document.getElementById("UPDraza2").checked){
+    //lo mismo que el opening
+    if (document.getElementById("raza1").checked){
+        eRaza="Saiyajins";
+    } else if (document.getElementById("raza2").checked){
         eRaza="Androides";
-    } else if (document.getElementById("UPDraza3").checked){
+    } else if (document.getElementById("raza3").checked){
         eRaza="Humanos";
     }
+    let eSaga = document.getElementById("saga");
 
-    let eSaga=document.getElementById("UPDsaga");
-
+    //obtive los valores de los campos del form
     let vNombre = eNombre.value;
     let vEdad = eEdad.value;
     let vEmail = eEmail.value;
@@ -162,10 +186,11 @@ const actualizar =()=>{
     let vRaza = eRaza;
     let vSaga = eSaga.value;
 
+    //cree un objeto con los valores del form
     let objeto = {
         nombre: vNombre,
         edad: vEdad,
-        email: vEmail, 
+        email: vEmail,
         rut: vRut,
         personaje: vPersonaje,
         habilidad: vHabilidad,
@@ -173,10 +198,11 @@ const actualizar =()=>{
         raza: vRaza,
         saga: vSaga,
     };
-    
+    //obtuve el id del guerrero a actualizar
     let id = document.getElementById("btnActualizar").value;
-    actualizarGuerrero(objeto,id).then(()=>{
-        alert ("Se ha actualizado correctamente al Guerrero Z");
+    //llame a la funcion para actualizar el guerrero en la BD
+    actualizarPersona(objeto, id).then(()=> {
+        alert("Se a actualizado correctamente a \nNombre");
         cargarDatos();
     });
 }

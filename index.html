@@ -3,147 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuestionario Dragon Ball Z</title>
+    <title>Prueba</title>
     <script type="module" src="asset/js/script.js"></script>
-    <link rel="stylesheet" href="asset/css/styles.css"> 
-    
+    <link rel="stylesheet" href="asset/css/styles.css">
 </head>
 <body>
+    <button type="button" id="btncambiarContraste">Cambiar Contraste</button>
     <form>
-        <fieldset>
-            <legend><h1>INGRESE SUS DATOS Y PREFERENCIAS DEL ANIME</h1></legend>
-            <button onclick="cambiarContraste()">cambiarContraste</button>
-
-        <!-- AQUI VAN LOS CAMPOS DE USUARIO -->
-        <h2>Datos del usuario</h2>
-        <label for="nombre">Nombre del usuario: </label>
+        <h1>Datos personales</h1> 
+        <label for="nombre">Nombre completo: </label>
         <input type="text" id="nombre" name="nombre"><br><br>
 
-        <label for="edad">Edad del usuario: </label>
+        <label for="edad">Edad: </label>
         <input type="number" id="edad" name="edad"><br><br>
 
-        <label for="email">Correo electronico: </label>
+        <label for="email">Correo: </label>
         <input type="email" id="email" name="email"><br><br>
 
-        <label for="rut">Rut: </label>
+        <label for="rut">RUT: </label>
         <input type="text" id="rut" name="rut"><br><br>
-        <!-- FIN DE CAMPOS USUARIO -->
 
-        <!-- AQUI CAMPOS DE TEMATICA DRAGON BALL Z -->
-         <!-- me equivoqe en input id id era type , id -->
-        <h2>Personajes</h2>
-        <label for="personaje">Personaje favorito: </label>
+        <h1>Personaje favorito</h1>
+        <label for="personaje">Personaje favorito:</label>
         <input type="text" id="personaje" name="personaje"><br><br>
 
-        <h2>Habilidades</h2>
-        <label for="habilidad">Habilidades favoritas: </label>
-        <textarea id="habilidad" name="habilidad" rows="5"></textarea><br><br>
+        <h1>Habilidades favoritas</h1>
+        <label for="habilidad">Habilidad especial: </label>
+        <textarea id="habilidad" name="habilidad" rows="4"></textarea><br><br>  
 
-        <h2>Openings</h2> 
-        <!-- corregui esta parte por que esta mal organizado/implementada -->
-        <label for="opening">Openings favoritos: </label><br><br>
+        <h1>Openings favoritas</h1>
+        <label for="opening">Opening favorito: </label><br> 
         <input type="checkbox" id="opening1" name="opening1">CHA-LA HEAD-CHA-LA<br><br>
         <input type="checkbox" id="opening2" name="opening2">WE GOTTA POWER<br><br>
-        <input type="checkbox" id="opening3" name="opening3">EL PODER NUESTRO ES<br><br>
+        <input type="checkbox" id="opening3" name="opening3">El Podre Nuestro Es<br><br>
 
-        <!-- AQUI ME FALTO AGREGAR EL VALUE (VALORES QUE YO PUSE EN LOS RADIOS) -->
-        <h2>Razas</h2>
+        <h1>Raza favorita: </h1>
         <label for="raza1">Saijayins</label>
-        <input type="radio" id="raza1" name="raza1" value="Saijayins"><br><br>
+        <input type="radio" id="raza1" name="raza" value="Saijayins"><br><br>
         <label for="raza2">Androides</label>
-        <input type="radio" id="raza2" name="raza2" value="Androides"><br><br>
+        <input type="radio" id="raza2" name="raza" value="Androides"><br><br>
         <label for="raza3">Humanos</label>
-        <input type="radio" id="raza3" name="raza3" value="Humanos"><br><br>
+        <input type="radio" id="raza3" name="raza" value="Humanos"><br><br>
 
-        <!-- AGREGUE EL ULTIMO CAMPO Q ME FALTABA (SELECT) -->
-        <h2>Sagas</h2>
+        <h1>Saga favorita</h1>
         <label for="saga">Saga favorita: </label>
         <select id="saga" name="saga">
-            <option value="Saga de los saijayins">Saga de los saijayins</option>
+            <option value="Saga de los Saijayins">Saga de los Saijayins</option>
             <option value="Saga de Freezer">Saga de Freezer</option>
             <option value="Saga de Cell">Saga de Cell</option>
             <option value="Saga de Majin Boo">Saga de Majin Boo</option>
-        </select>
         
-        <!-- ME EQUIVOQYE DE TYPE, era type button -->
-        <center><button type="button" id="btnRegistrar">Registrar Guerrero Z</button></center>
-        <center><button type="button" id="btnActualizar">Mofificar Guerrero</button></center>
-        
-        <br><br>
-    <fieldset>
-        <form>
-            <!-- ACTUALIZAR DATOS -->
-             <!-- ...... -->
-        <h2>Datos del usuario</h2>
-        <label for="UPDnombre">Nombre del usuario: </label>
-        <input type="text" id="UPDnombre" name="nombre"><br><br>
-
-        <label for="UPDedad">Edad del usuario: </label>
-        <input type="number" id="UPDedad" name="edad"><br><br>
-
-        <label for="UPDemail">Correo electronico: </label>
-        <input type="email" id="UPDemail" name="email"><br><br>
-
-        <label for="UPDrut">Rut: </label>
-        <input type="text" id="UPDrut" name="rut"><br><br>
-        <!-- FIN DE CAMPOS USUARIO -->
-
-        <h2>Personajes</h2>
-        <label for="UPDpersonaje">Personaje favorito: </label>
-        <input type="text" id="UPDpersonaje" name="personaje"><br><br>
-
-        <h2>Habilidades</h2>
-        <label for="UPDhabilidad">Habilidades favoritas: </label>
-        <textarea id="UPDhabilidad" name="habilidad" rows="5"></textarea><br><br>
-
-        <h2>Openings</h2> 
-        <label for="UPDopening">Openings favoritos: </label><br><br>
-        <input type="checkbox" id="UPDopening1" name="opening1">CHA-LA HEAD-CHA-LA<br><br>
-        <input type="checkbox" id="UPDopening2" name="opening2">WE GOTTA POWER<br><br>
-        <input type="checkbox" id="UPDopening3" name="opening3">EL PODER NUESTRO ES<br><br>
-
-        <h2>Razas</h2>
-        <label for="UPDraza1">Saijayins</label>
-        <input type="radio" id="UPDraza1" name="raza1" value="Saijayins"><br><br>
-        <label for="raza2">Androides</label>
-        <input type="radio" id="UPDraza2" name="raza2" value="Androides"><br><br>
-        <label for="raza3">Humanos</label>
-        <input type="radio" id="UPDraza3" name="raza3" value="Humanos"><br><br>
-
-        <h2>Sagas</h2>
-        <label for="UPDsaga">Saga favorita: </label>
-        <select id="UPDsaga" name="saga">
-            <option value="Saga de los saijayins">Saga de los saijayins</option>
-            <option value="Saga de Freezer">Saga de Freezer</option>
-            <option value="Saga de Cell">Saga de Cell</option>
-            <option value="Saga de Majin Boo">Saga de Majin Boo</option>
         </select><br><br>
-        <button type="button" id="btnActualizar">Actualizar</button>
-            
-        </form>
-        ></fieldset>
-    </fieldset>
-    <br>
-
-    <fieldset>
-        <h1>Tabla de registros</h1>
-        <table>
-            <tr>
-                <th>Nombre del usuario</th>
-                <th>Edad del usuario</th>
-                <th>Correo del usuario</th>
-                <th>Rut del usuario</th>
-                <th>Personaje fav</th>
-                <th>Habilidad fav</th>
-                <th>Opening fav</th>
-                <th>Razas fav</th>
-                <th>Saga fav</th>
-            </tr>
-            <tbody id="tbDatos">
-            </tbody>
-        </table>
-    </fieldset>
+        <center><button type="button" id="btnRegistrar">Registrar</button></center>
     </form>
-    
+    <button type="button" id="btnActualizar">Actualizar</button>
+
+    <br><br>
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre Usuario</th>
+            <th>Edad Usuario</th>
+            <th>RUT Usuario</th>
+            <th>Personaje</th>
+            <th>Habilidad</th>
+            <th>Openings</th>
+            <th>Razas</th>
+        </tr>
+        </thead>
+        <tbody id="tbDatos">
+        </tbody>
+    </table>
+
 </body>
 </html>
